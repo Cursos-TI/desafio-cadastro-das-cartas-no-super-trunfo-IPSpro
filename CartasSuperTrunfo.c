@@ -1,23 +1,19 @@
 #include <stdio.h>
 
 // Desafio Super Trunfo - Países
-// Tema 1 - Cadastro das Cartas
-// Este código inicial serve como base para o desenvolvimento do sistema de cadastro de cartas de cidades.
-// Siga os comentários para implementar cada parte do desafio.
-//Teste larissa
+// Tema 2  - Densidade Populacional e PIB per Capita
 
 int main() {
 
-    char nome[15];
+    char nome[100];
     int populacao;
     double area;
     int pib;
-    int turistico; //número de pontos turísticos
+    int turistico;
     
- //bloco de dados destinado à coleta dos dados das cartas:
+//bloco de dados destinado à coleta dos dados das cartas:
     printf("Olá, bem-vindo ao Maker de Cards do Super Trunfo Cidades\nPara começar, digite o nome da cidade:\n");
     scanf("%14s", nome); //Uso do núemero 14 antes do s em #s para assegurar que o usuário não ultrapasse o limite de caracteres definido.
-
 
     printf("%s possui quantos habitantes?\n", nome); //utilização da primeira informação concebida pela usuário sendo representado pelo "%s".
     scanf("%d", &populacao);
@@ -31,8 +27,18 @@ int main() {
     printf("Quantos pontos turísticos %s possui?\n", nome); //utilização da primeira informação concebida pela usuário sendo representado pelo "%s".
     scanf("%d", &turistico);
     printf("\n");
+
+    double pibpercap = (double) pib / (double) populacao; 
+    /* para calculo do PIB per Capita, como o resultado pode ser decimal, é
+necessário converter os dados, mas somente na saída. */
+
+    double densidadepop = (double) populacao / area; 
+    /* no caso da densidade Populacional é necessário converter, como são
+dois tipos diferentes de dados.*/
+
 //Impressão na tela de todos os dados da carta
-    printf ("Carta gerada com sucesso!\n\nCódigo: A01\nNome: %s\nPopulação: %d habitantes\nÁrea: %.1lfkm²\nPIB(Produto Interno Bruto): R$%d\nQuantidade de Pontos Turísticos: %d\n\n", nome, populacao, area, pib, turistico);
+    printf ("Carta gerada com sucesso!\n\nCódigo: A01\nNome: %s\nPopulação: %d habitantes\nÁrea: %.1lfkm²\nPIB(Produto Interno Bruto): R$%d\nQuantidade de Pontos Turísticos: %d\nPIB per Capita: R$%.2lf\nDensidade Populacional: %.2lf Habitantes por Quilômetro Quadrado\n\n", 
+    nome, populacao, area, pib, turistico, pibpercap, densidadepop);
 
     return 0;
 }
