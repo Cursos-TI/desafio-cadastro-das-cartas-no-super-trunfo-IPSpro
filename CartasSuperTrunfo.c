@@ -94,13 +94,14 @@ dois tipos diferentes de dados.*/
 //Bloco de códigos para o sistema de compração. (Compreendo a existência de uma forma melhor que essa utilizada por mim, entretando, ainda não a domino.)
 
 int ponto = 0;
-int ponto2 = 0;
+int ponto2 = 0; // variáveis feitas para receber incremento. Em seguida a variável de maior valor será definida como campeã
 
-                 if (populacao > populacao2) {printf("População: %s > %s\n", nome, nome2); ponto++;    
-            } else if (populacao < populacao2) {printf("População: %s < %s\n", nome, nome2); ponto2++;
-        } else {printf("População: %s = %s\n", nome, nome2);
+                 if (populacao > populacao2) {printf("População: %s > %s\n", nome, nome2); ponto++;  // Verifica se a população de A01 é maior que a de A02, se for, esta informação é exposta na tela e a pontuação de A01 aumenta. 
+            } else if (populacao < populacao2) {printf("População: %s < %s\n", nome, nome2); ponto2++; // Se for menor, a informação é "printada" e a pontuação de A02 aumenta.
+        } else {printf("População: %s = %s\n", nome, nome2); // Se forem iguais, a informação vai para a tela, sem mais alterações na pontuação.
     }
 
+    //Mesma lógica das variáveis populacao e populacao2 se aplica às próximas abaixo, com exeção da densidadepop e da comparação de pontos.
                  if (area > area2) {printf("Área: %s > %s\n", nome, nome2); ponto++;  
             } else if (area < area2) {printf("População: %s < %s\n", nome, nome2); ponto2++;
         } else {printf("População: %s = %s\n", nome, nome2);
@@ -121,19 +122,22 @@ int ponto2 = 0;
         } else {printf("PIB Per Capita: %s = %s\n", nome, nome2);
     }
 
-                if (densidadepop > densidadepop2) {printf("Densidade Populacional: %s > %s\n", nome, nome2); ponto++; 
-            } else if (densidadepop < densidadepop2) {printf("Densidade Populacional: %s < %s\n", nome, nome2); ponto2++;
+    //No caso da densidade populacional, os pontos são decrementados, pois ganha quem tem a menor densidade 
+                if (densidadepop > densidadepop2) {printf("Densidade Populacional: %s > %s\n", nome, nome2); ponto--; 
+            } else if (densidadepop < densidadepop2) {printf("Densidade Populacional: %s < %s\n", nome, nome2); ponto2--;
         } else {printf("Densidade Populacional: %s = %s\n", nome, nome2);
     }
 
-                 if (super > super2) {printf("~SUPER!:~ %s > %s\n\n", nome, nome2); ponto++;    
+                 if (super > super2) {printf("~SUPER!:~ %s > %s\n\n", nome, nome2); ponto++;  
             } else if (super < super2) {printf("~SUPER!:~ %s < %s\n\n", nome, nome2); ponto2++;
         } else {printf("~SUPER!:~ %s = %s\n\n", nome, nome2);
-    }
+    } 
     
-    if (ponto > ponto2) {printf("%s, CIDADE A01 É A CAMPEÃ!\n\n", nome); 
-            } else if (ponto < ponto2) {printf("%s, CIDADE A02 É A CAMPEÃ!\n\n", nome2);
-        } else {printf("WOW!! AS CIDADES %s E %s EMPATARAM!\n\n", nome, nome2);
+    //As variáveis de pontos serão incrementadas ou decrementadas durante a execução do código, no final terão um valor fixo que permitirá dizer a campeã.
+
+    if (ponto > ponto2) {printf("%s, CIDADE A01 É A CAMPEÃ!\n\n", nome); //teste se A01 tem mais pontos
+            } else if (ponto < ponto2) {printf("%s, CIDADE A02 É A CAMPEÃ!\n\n", nome2); //teste se A02 tem mais pontos
+        } else {printf("WOW!! AS CIDADES %s E %s EMPATARAM!\n\n", nome, nome2); // teste se as duas cidades tem valores iguais.
     }
 
     return 0;
